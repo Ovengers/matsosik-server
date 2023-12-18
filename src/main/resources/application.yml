@@ -2,5 +2,12 @@ spring:
   profiles:
     default: local
 
+management:
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        health: health-check
+
 logging:
   config: classpath:logback.xml
