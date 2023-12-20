@@ -1,0 +1,12 @@
+version: '3'
+services:
+  database:
+    container_name: postgresql-container
+    image: postgres
+    environment:
+      POSTGRES_DB: matsosik_db
+      POSTGRES_ROOT_PASSWORD: matsosik_password
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

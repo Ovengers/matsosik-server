@@ -2,6 +2,11 @@ spring:
   config:
     activate:
       on-profile: local
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/matsosik_db
+    username: root
+    password: matsosik_password
 
 server:
   port: 8082

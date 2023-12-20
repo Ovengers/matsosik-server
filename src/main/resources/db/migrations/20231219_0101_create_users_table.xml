@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+            http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="kimjaejun">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="nickname" type="varchar(255)"/>
+            <column name="profile_image" type="varchar(255)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="updated_at" type="datetime"/>
+        </createTable>
+
+        <createIndex indexName="uk_users_on_email" unique="true" tableName="users">
+            <column name="email" type="varchar(255)"/>
+        </createIndex>
+        <createIndex indexName="idx_users_on_email_created_at" tableName="users">
+            <column name="email" type="varchar(255)"/>
+            <column name="created_at" type="datetime"/>
+        </createIndex>
+        <createIndex indexName="idx_users_on_name_created_at" tableName="users">
+            <column name="name" type="varchar(255)"/>
+            <column name="created_at" type="datetime"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
