@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/matsosik_test_db
+    username: root
+    password: matsosik_password
+  jpa:
+    open-in-view: false
+    properties:
+      properties:
+        hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/migration-master.xml
+    url: jdbc:postgresql://localhost:5432/matsosik_test_db
+    user: root
+    password: matsosik_password
