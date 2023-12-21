@@ -1,4 +1,4 @@
-package productguild.oparty.matsosik.global.datasourceconfig
+package productguild.oparty.matsosik.global.config.datasources
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
