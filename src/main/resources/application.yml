@@ -1,10 +1,15 @@
 spring:
   profiles:
     default: local
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: validate # entity 생성은 Liquibase 로 버저닝하여 진행
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   liquibase:
     enabled: true
