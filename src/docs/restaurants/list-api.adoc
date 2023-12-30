@@ -1,0 +1,127 @@
+= 식당 목록 조회 API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+== 개요
+식당 목록 조회 API입니다.
+
+== API Spec
+=== Request
+[cols="2,3,5"]
+|===
+|Http Method |Host |Request Path
+
+|`GET`
+|각 환경에 맞는 host url
+|`/api/v1/restaurants`
+|===
+
+==== Request Header
+[cols="2,2,1,5"]
+|===
+|Name |Value |Required |Description
+
+|Content-Type
+|`application/json`
+|*TRUE*
+|-
+
+|[line-through]#Authorization#
+|[line-through]#`{JWT_AUTH_TOKEN}`#
+|[line-through]#*TRUE*#
+|[line-through]#*유저 인증 토큰*# 구현 예정
+|===
+
+==== Request Query Parameters
+위치정보에 대한 검색조건이 없다면, 마제스타시티타워 위치를 기준으로 반경 1000m 내 식당을 조회하게 됩니다.
+
+[cols="2,2,1,5"]
+|===
+|Name |Type |Required |Description
+
+|displayName
+|`String`
+|*False*
+|식당 이름 정보
+
+|latitude
+|`Number`
+|*False*
+|식당 위치 - 위도 (default: `37.4904845`)
+
+|longitude
+|`Number`
+|*False*
+|식당 위치 - 경도 (default: `127.0056469`)
+
+|rangeMeter
+|`Integer`
+|*False*
+|조회할 반경 기준 (단위: m, default: `1000 m`)
+|===
+
+=== Response
+[cols="2,2,6"]
+|===
+|Name |Type |Description
+
+|restaurants
+|`Array<Restaurant>`
+|식당 조회 결과 리스트
+|===
+
+==== Restaurant
+[cols="2,2,6"]
+|===
+|Name |Type |Description
+
+|id
+|`Integer`
+|식당 id 정보
+
+|displayName
+|`String`
+|식당 이름
+
+|address
+|`String`
+|식당 주소
+
+|thumbnail
+|`String`
+|식당 대표 이미지 url
+
+|latitude
+|`Number`
+|식당 위치 - 위도
+
+|longitude
+|`Number`
+|식당 위치 - 경도
+|===
+
+== Examples
+
+=== Request
+==== 검색 조건이 모두 존재할 경우 요청
+include::{snippets}/restaurant-controller-test/list/success/with-displayName/http-request.adoc[]
+==== 검색 조건이 하나도 없을 경우 요청
+include::{snippets}/restaurant-controller-test/list/success/without-searchData/http-request.adoc[]
+
+=== Response
+참고 : 기본적으로 모두 HTTP status code 200으로 반환합니다. 그 외의 경우에는 명시적으로 상태코드에 대한 정보를 기입해놓습니다.
+
+==== 정상적으로 목록 조회 요청을 했을 경우
+===== 검색결과가 존재할 경우 응답
+include::{snippets}/restaurant-controller-test/list/success/without-searchData/response-body.adoc[]
+
+===== 검색결과가 없을 경우 응답
+include::{snippets}/restaurant-controller-test/list/success/return-empty-list/response-body.adoc[]

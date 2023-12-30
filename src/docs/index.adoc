@@ -1,0 +1,27 @@
+= Matsosik(맛소식) API Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+== 설명
+
+[source,text]
+----
+해당 문서는 맛소식 API spec을 정리한 문서입니다.
+----
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+== API Docs Links
+
+- link:https://matsosik-api-docs.netlify.app/restaurants[식당 API Docs]
+
+== 맛소식을 함께 개발하는 사람들
+- 박상혁 (Android)
+- 김재현 (iOS)
+- 김재준 (server)
