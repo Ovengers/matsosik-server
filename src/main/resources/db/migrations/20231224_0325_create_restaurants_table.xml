@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+            http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2" author="kimjaejun">
+        <createTable tableName="restaurants">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="display_name" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="thumbnail" type="text"/>
+            <column name="address" type="varchar(255)"/>
+            <column name="geo_location" type="geometry(Point, 4326)"/>
+            <column name="extra_info" type="text"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="updated_at" type="timestamp"/>
+        </createTable>
+
+        <sql>CREATE INDEX idx__geo_location ON restaurants USING gist (geo_location);</sql>
+        <createIndex indexName="idx__display_name__created_at" tableName="restaurants">
+            <column name="display_name" type="varchar(255)"/>
+            <column name="created_at" type="timestamp"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

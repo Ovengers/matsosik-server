@@ -1,0 +1,14 @@
+= Restaurants API Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+== 설명
+식당 관련 API Docs 입니다.
+
+== Links
+
+- link:https://matsosik-api-docs.netlify.app/restaurants/list-api[식당 목록 조회 API Docs]
